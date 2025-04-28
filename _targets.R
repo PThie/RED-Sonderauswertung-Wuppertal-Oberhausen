@@ -139,6 +139,14 @@ targets_reading <- rlang::list2(
             "BA-Raeume.gpkg"
         ),
         reading_oberhausen_shapes(!!.x)
+    ),
+    tar_file_read(
+        red_rents_data,
+        file.path(
+            config_paths()[["red_data_path"]],
+            "WM_allVersions_ohneText.parquet"
+        ),
+        reading_red_data(!!.x)
     )
 )
 
@@ -151,7 +159,7 @@ targets_processing <- rlang::list2(
         cleaning_oberhausen_shapes(
             oberhausen_data = oberhausen_shapes
         )
-    )
+    ),
 )
 
 #--------------------------------------------------
