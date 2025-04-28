@@ -136,10 +136,21 @@ targets_reading <- rlang::list2(
             config_paths()[["data_path"]],
             "raw",
             "oberhausen_shapes",
-            "BA-Räume.gpkg"
+            "BA-Raeume.gpkg"
         ),
-        reading_oberhausen_shapes(!!.x),
-        format = "qs"
+        reading_oberhausen_shapes(!!.x)
+    )
+)
+
+#--------------------------------------------------
+# processing
+
+targets_processing <- rlang::list2(
+    tar_qs(
+        oberhausen_cleaned,
+        cleaning_oberhausen_shapes(
+            oberhausen_data = oberhausen_shapes
+        )
     )
 )
 
@@ -163,6 +174,7 @@ targets_pipeline_stats <- rlang::list2(
 # combine all target branches
 
 rlang::list2(
-
+    targets_reading,
+    targets_processing,
     targets_pipeline_stats
 )
