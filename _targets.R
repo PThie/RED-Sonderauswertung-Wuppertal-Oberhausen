@@ -182,6 +182,18 @@ targets_processing <- rlang::list2(
 )
 
 #--------------------------------------------------
+# exports
+
+targets_exports <- rlang::list2(
+    tar_fst(
+        red_exported,
+        exporting_red_data(
+            red_data = red_anonymized
+        )
+    )
+)
+
+#--------------------------------------------------
 # pipeline stats
 
 targets_pipeline_stats <- rlang::list2(
@@ -203,5 +215,6 @@ targets_pipeline_stats <- rlang::list2(
 rlang::list2(
     targets_reading,
     targets_processing,
+    targets_exports,
     targets_pipeline_stats
 )
