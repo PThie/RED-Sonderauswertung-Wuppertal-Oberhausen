@@ -30,6 +30,27 @@ cleaning_oberhausen_shapes <- function(
     )
 
     #--------------------------------------------------
+    # check for duplicates
+
+    targets::tar_assert_true(
+        nrow(oberhausen_prep) == length(unique(oberhausen_prep$ba_raum)),
+        msg = glue::glue(
+            "!!! WARNING: ",
+            "The Oberhausen shapes contain duplicates!",
+            " (Error code: cos#1)"
+        )
+    )
+
+    targets::tar_assert_true(
+        unique(duplicated(oberhausen_prep)) == FALSE,
+        msg = glue::glue(
+            "!!! WARNING: ",
+            "The Oberhausen shapes contain duplicates!",
+            " (Error code: cos#2)"
+        )
+    )
+
+    #--------------------------------------------------
     # return
 
     return(oberhausen_prep)
