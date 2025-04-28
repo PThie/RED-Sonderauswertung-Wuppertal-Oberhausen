@@ -1,0 +1,5 @@
+data/
+output/
+src/helpers/config.R
+_targets/
+renv/
