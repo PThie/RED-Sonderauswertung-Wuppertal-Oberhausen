@@ -27,6 +27,7 @@ suppressPackageStartupMessages({
     library(sf)
     library(data.table)
     library(arrow)
+    library(stringr)
     library(autometric)
     library(kableExtra)
 })
@@ -124,6 +125,23 @@ for (sub_directory in sub_directories) {
 ###################################################
 # ACTUAL PIPELINE
 ###################################################
+
+#--------------------------------------------------
+# reading data
+
+targets_reading <- rlang::list2(
+    tar_file_read(
+        oberhausen_shapes,
+        file.path(
+            config_paths()[["data_path"]],
+            "raw",
+            "oberhausen_shapes",
+            "BA-Räume.gpkg"
+        ),
+        reading_oberhausen_shapes(!!.x),
+        format = "qs"
+    )
+)
 
 #--------------------------------------------------
 # pipeline stats
