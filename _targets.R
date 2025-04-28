@@ -165,6 +165,13 @@ targets_processing <- rlang::list2(
         cleaning_red_data(
             red_data = red_rents_data
         )
+    ),
+    tar_fst(
+        red_conected,
+        connecting_red_oberhausen(
+            red_data = red_data_cleaned,
+            oberhausen_data = oberhausen_cleaned
+        )
     )
 )
 
