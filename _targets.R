@@ -160,6 +160,12 @@ targets_processing <- rlang::list2(
             oberhausen_data = oberhausen_shapes
         )
     ),
+    tar_qs(
+        red_data_cleaned,
+        cleaning_red_data(
+            red_data = red_rents_data
+        )
+    )
 )
 
 #--------------------------------------------------
